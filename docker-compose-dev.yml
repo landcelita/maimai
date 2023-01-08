@@ -16,12 +16,14 @@ services:
         condition: service_healthy
   db:
     restart: always
-    image: mysql
+    build: 
+      context: ./infra/mysql
+      dockerfile: Dockerfile.dev
     ports:
       - "3306:3306"
     env_file:
       - .env
-    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    command: bash -c 'usermod -o -u $LINUX_MYSQL_UID mysql; groupmod -o -g $LINUX_MYSQL_GID mysql; chown -R mysql:root /var/run/mysqld/ /var/log/mysql/ /var/lib/mysql/; /entrypoint.sh mysqld --user=mysql --console'
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-u$$MYSQL_USER", "-p$$MYSQL_PASSWORD"]
       interval: 60s
@@ -30,7 +32,7 @@ services:
       start_period: 30s
     volumes:
       - db-store:/var/lib/mysql
-      - ./logs:/var/log/mysql
+      - ./logs/mysql:/var/log/mysql
 
 volumes:
   db-store:
