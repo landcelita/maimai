@@ -8,3 +8,5 @@ scraping:
 	docker compose -f ${DOCKER_COMPOSE_FILE} exec scraping /bin/bash
 ps:
 	docker compose -f ${DOCKER_COMPOSE_FILE} ps -a
+destroy:
+	docker compose -f ${DOCKER_COMPOSE_FILE} down --rmi all --volumes --remove-orphans
