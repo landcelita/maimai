@@ -10,7 +10,7 @@ ENV LANGUAGE ja_JP:ja
 ENV LC_ALL ja_JP.UTF-8
 ENV TZ JST-9
 
-RUN apt-get -y install python-dev python3-dev default-libmysqlclient-dev
+RUN apt-get -y install gcc python-dev python3-dev default-libmysqlclient-dev libmariadb-dev
 
 COPY requirements.txt /usr/src/
 RUN pip install --upgrade pip
