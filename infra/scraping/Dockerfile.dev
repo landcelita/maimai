@@ -15,4 +15,4 @@ RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools
 RUN pip install --no-cache-dir -r /usr/src/requirements.txt
 
-CMD [ "python", "./your-daemon-or-script.py" ] # cronにする
+# CMD [ "python", "./your-daemon-or-script.py" ] # cronにする
