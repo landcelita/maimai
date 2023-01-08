@@ -1,0 +1,10 @@
+version: '2'
+services:
+  scraping:
+    restart: always
+    build:
+      context: ./infra/scraping
+      dockerfile: Dockerfile.dev
+    working_dir: '/usr/src/app'
+    volumes:
+      - ./src/scraping:/usr/src/app
