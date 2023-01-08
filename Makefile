@@ -6,6 +6,8 @@ down:
 	docker compose -f ${DOCKER_COMPOSE_FILE} down --remove-orphans
 scraping:
 	docker compose -f ${DOCKER_COMPOSE_FILE} exec scraping /bin/bash
+db:
+	docker compose -f ${DOCKER_COMPOSE_FILE} exec db /bin/bash
 ps:
 	docker compose -f ${DOCKER_COMPOSE_FILE} ps -a
 destroy:
