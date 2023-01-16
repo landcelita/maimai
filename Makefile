@@ -11,4 +11,4 @@ db:
 ps:
 	docker compose -f ${DOCKER_COMPOSE_FILE} ps -a
 destroy:
-	docker compose -f ${DOCKER_COMPOSE_FILE} down --rmi all --volumes --remove-orphans
+	docker compose -f docker-compose-dev.yml down --rmi all --volumes --remove-orphans
